@@ -1,0 +1,11 @@
+{
+    "schema_version": 2,
+    "commit": "4b6cb715a22d9e6221f9158132e5f32c9f7898dd",
+    "indexed_at": "2026-07-16T23:04:16Z",
+    "project": "TumiPayTechnicalTest",
+    "nodes": 1217,
+    "edges": 2151,
+    "original_size": 3211264,
+    "compressed_size": 263977,
+    "compression_level": 3
+}

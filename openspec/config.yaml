@@ -1,0 +1,32 @@
+schema: spec-driven
+
+context: |
+  React Native project "TumiPayTechnicalTest" (existing codebase, brownfield). TypeScript.
+  Layered architecture: domain, application, infrastructure, presentation, shared, setup.
+  Reusable custom components live in `components/` (verify actual path before first
+  change). ALWAYS inspect existing modal/bottom-sheet and balance-display components
+  before proposing any new UI implementation, using codebase-memory-mcp's
+  search_graph/get_architecture/get_code_snippet tools when available, falling back to
+  direct file reading only if the MCP tool is not present. Reuse existing components
+  whenever they cover the need; only create a new component when nothing in the
+  codebase covers it, and justify why in design.md.
+  This project has no Figma reference for this pilot: when no design source is
+  provided, infer visual/interaction patterns from the closest existing equivalent
+  already implemented in this codebase (e.g. an existing modal's open/close behavior,
+  loading/error states, and balance formatting logic) instead of inventing new patterns.
+  Branch convention: feature/<HU_CODE>, created manually before /opsx:propose runs.
+  Every change must include unit tests for touched logic before archiving.
+  This is a brownfield codebase: document only the behavior being actively changed.
+  Never attempt to backfill specs for untouched code.
+
+rules:
+  proposal:
+    - Keep proposals under 500 words
+    - Always include a "Non-goals" section
+  design:
+    - Explicitly list every existing component being reused, with the exact prop(s) used
+    - Explicitly flag any UI element that has no existing equivalent, with justification for creating it
+  tasks:
+    - Break tasks into chunks of max 2 hours
+    - Include a unit test task for every piece of touched logic before any task can be marked complete
+    - The last task must be updating the relevant module's README
