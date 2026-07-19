@@ -1,7 +1,7 @@
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
 import { Text } from 'react-native-paper';
 
 import {
@@ -17,6 +17,7 @@ import {
 import {
   ActiveGoalsCard,
   BalanceCard,
+  BalanceModal,
   PayInSnackbar,
   RecentActivity,
   SummaryRow,
@@ -30,6 +31,7 @@ type Props = BottomTabScreenProps<BottomTabsParams, 'Home'>;
 export const HomeScreen = ({ navigation }: Props): JSX.Element => {
   const { loadState, refetch, filteredTransactions } = useTransactionHistory();
   const { isConnected, isInternetReachable } = useInternetStatus();
+  const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false);
 
   const isLoading = loadState === 'loading';
   const isError = loadState === 'error';
@@ -44,6 +46,7 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
           onSend={() => {
             navigation.navigate('PayIn');
           }}
+          onIconPress={() => setIsBalanceModalOpen(true)}
         />
         <SummaryRow />
 
@@ -71,6 +74,10 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
       </View>
 
       <PayInSnackbar visible onView={() => {}} />
+      <BalanceModal
+        visibility={isBalanceModalOpen}
+        handleDismiss={() => setIsBalanceModalOpen(false)}
+      />
     </StandardWrapper>
   );
 };

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { JSX } from 'react';
 import { Button } from 'react-native-paper';
@@ -19,11 +19,13 @@ import { HOME_STRINGS } from '../../screens';
 interface BalanceCardProps {
   onTopUp?: () => void;
   onSend?: () => void;
+  onIconPress?: () => void;
 }
 
 export const BalanceCard = ({
   onTopUp,
   onSend,
+  onIconPress,
 }: BalanceCardProps): JSX.Element => {
   const { colors } = useAppTheme();
   const availableBalance = userInformationStorage(
@@ -35,7 +37,10 @@ export const BalanceCard = ({
         <BodyText size="medium" color={colors.onSurfaceVariant}>
           {HOME_STRINGS.availableBalance}
         </BodyText>
-        <View
+        <TouchableOpacity
+          onPress={onIconPress}
+          activeOpacity={0.7}
+          testID="wallet-icon-button"
           style={[
             styles.walletIcon,
             { backgroundColor: colors.primaryContainer },
@@ -44,7 +49,7 @@ export const BalanceCard = ({
           <BodyText size="medium" color={colors.primary}>
             💳
           </BodyText>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <TitleText

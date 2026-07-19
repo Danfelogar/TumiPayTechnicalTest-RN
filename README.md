@@ -323,6 +323,7 @@ src
 │   │   ├── home                         # Reusable UI components scoped to the Home screen
 │   │   │   ├── ActiveGoalsCard.tsx
 │   │   │   ├── BalanceCard.tsx
+│   │   │   ├── BalanceModal.tsx          # Modal showing available balance, triggered from BalanceCard icon
 │   │   │   ├── index.ts
 │   │   │   ├── PayInSnackbar.tsx
 │   │   │   ├── RecentActivity.tsx
